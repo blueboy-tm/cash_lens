@@ -47,5 +47,18 @@
 	<true/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Share backup files</string>
+	<key>UIBackgroundModes</key>
+	<array>
+	<string>fetch</string>
+	<string>remote-notification</string>
+	</array>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>uses for restrore backup</string>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>uses for restrore backup</string>
 </dict>
 </plist>
