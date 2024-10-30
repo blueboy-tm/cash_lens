@@ -9,7 +9,7 @@ class AccountInput extends StatefulWidget {
     this.value,
     this.hintText,
   });
-  final Function(AccountData account)? onChanged;
+  final Function(AccountData? account)? onChanged;
   final int? value;
   final String? hintText;
 
@@ -53,7 +53,7 @@ class _AccountInputState extends State<AccountInput> {
       hintText: widget.hintText ?? 'حساب',
       searchHintText: 'جستجو...',
       noResultFoundText: 'هیچ حسابی یافت نشد!',
-      headerBuilder: (context, selectedItem) => Text(selectedItem.title),
+      headerBuilder: (context, selectedItem, _) => Text(selectedItem.title),
       decoration: CustomDropdownDecoration(
         closedBorder: Border.all(
           color: const Color.fromARGB(255, 0, 0, 0),

@@ -82,7 +82,7 @@ class _TransferBalanceState extends State<TransferBalance> {
                   const SizedBox(height: 15),
                   AccountInput(
                     onChanged: (account) {
-                      from = account.id;
+                      from = account?.id;
                     },
                     value: widget.account,
                     hintText: 'از حساب',
@@ -97,7 +97,7 @@ class _TransferBalanceState extends State<TransferBalance> {
                   const SizedBox(height: 10),
                   AccountInput(
                     onChanged: (account) {
-                      to = account.id;
+                      to = account?.id;
                     },
                     hintText: 'به حساب',
                   ),

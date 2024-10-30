@@ -63,7 +63,7 @@ class _TransactionFormState extends State<TransactionForm> {
           const SizedBox(height: 15),
           AccountInput(
             onChanged: (value) {
-              account = value.id;
+              account = value?.id;
             },
             value: account,
             hintText: 'حساب مرتبط',
