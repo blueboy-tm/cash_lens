@@ -9,4 +9,3 @@ class IncomeCost {
     return 'IncomeCost(income: $income, cost: $cost)';
   }
 }
-

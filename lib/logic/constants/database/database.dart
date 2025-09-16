@@ -265,6 +265,8 @@ class Database extends _$Database {
             .data['value'] ??
         0;
 
-    return IncomeCost(income: (income.abs() as num).toDouble(), cost: (cost.abs() as num).toDouble());
+    return IncomeCost(
+        income: (income.abs() as num).toDouble(),
+        cost: (cost.abs() as num).toDouble());
   }
 }
