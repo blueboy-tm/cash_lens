@@ -1,13 +1,12 @@
 import 'dart:io';
 
 import 'package:cash_lens/logic/constants/database/database.dart';
-import 'package:cool_alert/cool_alert.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:share_extend/share_extend.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:path/path.dart' as p;
 
 class SettingsScreen extends StatelessWidget {
@@ -15,12 +14,11 @@ class SettingsScreen extends StatelessWidget {
 
   void getBackup() async {
     final dbFolder = await getApplicationDocumentsDirectory();
-    ShareExtend.share(
-      p.join(dbFolder.path, 'cash_lens.sqlite'),
-      'file',
-      sharePanelTitle: 'Cash Lens Backup',
-      subject: 'cash_lens_${DateFormat('y-M-d', 'en').format(DateTime.now())}',
-    );
+    SharePlus.instance.share(ShareParams(
+      title: 'Cash Lens Backup',
+      text: 'cash_lens_${DateFormat('y-M-d', 'en').format(DateTime.now())}',
+      files: [XFile(p.join(dbFolder.path, 'cash_lens.sqlite'))],
+    ));
   }
 
   void restoreBackup() async {
@@ -78,19 +76,21 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 5),
             TextButton(
               onPressed: () async {
-                CoolAlert.show(
-                  context: context,
-                  type: CoolAlertType.confirm,
-                  cancelBtnText: 'بستن',
-                  confirmBtnText: 'بازنشانی',
-                  title:
-                      'بعد از بازنشانی اطلاعات فعلی قابل بازگشت نیست. آیا ادامه میدهید؟',
-                  titleTextStyle: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  onConfirmBtnTap: restoreBackup,
-                );
+                // TODO: create a new dialog
+                restoreBackup();
+                // CoolAlert.show(
+                //   context: context,
+                //   type: CoolAlertType.confirm,
+                //   cancelBtnText: 'بستن',
+                //   confirmBtnText: 'بازنشانی',
+                //   title:
+                //       'بعد از بازنشانی اطلاعات فعلی قابل بازگشت نیست. آیا ادامه میدهید؟',
+                //   titleTextStyle: const TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.w700,
+                //   ),
+                //   onConfirmBtnTap: restoreBackup,
+                // );
               },
               child: const Text('بازنشانی فایل پشتیبانی'),
             ),

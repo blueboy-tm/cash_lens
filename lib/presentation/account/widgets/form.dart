@@ -1,7 +1,6 @@
 import 'package:cash_lens/logic/constants/database/database.dart';
 import 'package:cash_lens/logic/constants/form/validators/text_input.dart';
 import 'package:cash_lens/presentation/base/widgets/date_picker.dart';
-import 'package:cool_alert/cool_alert.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:flutter/material.dart';
 
@@ -113,18 +112,20 @@ class _AccountFormState extends State<AccountForm> {
                     foregroundColor: Colors.white,
                   ),
                   onPressed: () {
-                    CoolAlert.show(
-                      context: context,
-                      type: CoolAlertType.confirm,
-                      cancelBtnText: 'بستن',
-                      confirmBtnText: 'حذف',
-                      title: 'از حذف حساب مطمعن هستید؟',
-                      titleTextStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      onConfirmBtnTap: () => widget.onDelete?.call(),
-                    );
+                    // TODO: create a new dialog
+                    widget.onDelete?.call();
+                    // CoolAlert.show(
+                    //   context: context,
+                    //   type: CoolAlertType.confirm,
+                    //   cancelBtnText: 'بستن',
+                    //   confirmBtnText: 'حذف',
+                    //   title: 'از حذف حساب مطمعن هستید؟',
+                    //   titleTextStyle: const TextStyle(
+                    //     fontSize: 16,
+                    //     fontWeight: FontWeight.w700,
+                    //   ),
+                    //   onConfirmBtnTap: () => widget.onDelete?.call(),
+                    // );
                   },
                   child: const Text(
                     'حذف',
