@@ -45,8 +45,11 @@ class _BaseScreenState extends State<BaseScreen> {
       bottomNavigationBar: CrystalNavigationBar(
         currentIndex: page,
         selectedItemColor: Theme.of(context).colorScheme.onSecondaryContainer,
-        backgroundColor: Colors.black.withOpacity(0.05),
+        backgroundColor: Colors.black.withValues(alpha: 0.05),
         onTap: (index) {
+          if (index == 0) {
+            context.read<DashboardCubit>().reload();
+          }
           pageController.animateToPage(
             index,
             duration: const Duration(milliseconds: 300),
