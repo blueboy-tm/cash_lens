@@ -21,20 +21,21 @@ class DashboardScreen extends StatelessWidget {
         },
         child: SizedBox(
           height: double.infinity,
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: BlocBuilder<DashboardCubit, DashboardState>(
-                builder: (context, state) {
-                  if (!state.accountsLoaded) {
-                    return const Loading();
-                  }
-                  if (state.accountsLoaded &&
-                      (state.account?.isEmpty ?? true)) {
-                    return const EmptyList('ابتدا یک حساب شخصی اضافه کنید');
-                  }
-                  return Column(
+          child: BlocBuilder<DashboardCubit, DashboardState>(
+            builder: (context, state) {
+              if (!state.accountsLoaded) {
+                return const Center(child: Loading());
+              }
+              if (state.accountsLoaded && (state.account?.isEmpty ?? true)) {
+                return const Center(
+                  child: EmptyList('ابتدا یک حساب شخصی اضافه کنید'),
+                );
+              }
+              return SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Column(
                     children: [
                       const SizedBox(height: 10),
                       IncomesView(state: state),
@@ -44,10 +45,10 @@ class DashboardScreen extends StatelessWidget {
                         balances: state.balances!,
                       )
                     ],
-                  );
-                },
-              ),
-            ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),
